@@ -19,8 +19,3 @@ def all_match_data(year):
             f'{year_match_data[count][5]}')
 
     return year_match_data
-
-
-if __name__ == '__main__':
-    data = all_match_data(2017)
-    print(data[3])
