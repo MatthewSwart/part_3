@@ -38,6 +38,7 @@ def return_full_match_info(match_id):
             match_info.append(line)
     return match_info
 
+
 if __name__ == '__main__':
     data = return_full_match_info(416)
-    print(len(data))
+    print(data)
