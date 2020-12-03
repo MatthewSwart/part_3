@@ -3,13 +3,21 @@
 This project is from MSc Software design with artificial intelligence subject Applied Scripting Languages 2020. The primary goal is to break up the data files with no libraries except for Matplotlib/Seaborn which is used for visualisation of the data. 
 
 Important: In this part, you may only use the following Python Features
+  
   • Section 1: Fundamentals (input, formatted output, basic string processing, calculations, the math module)
+  
   • Section 2: Control Structures (if-elif-else, while and for)
+  
   • Section 3: Data Structures 1 – Lists, Tuples and Sets, List Comprehensions
+  
   • Section 4: File Processing and Exceptions
+  
   • Section 5: Functions, Testing and Modular Design
+  
   • Section 6: Data Structures 2 – Dictionaries, Maps, Dictionary Comprehensions
+  
   • Section 7: Visualisation with Matplotlib/Seaborn.
+  
 Do not use, classes, the csv or statistics modules, pandas/NumPy or any other features.
 
 Deliverables
