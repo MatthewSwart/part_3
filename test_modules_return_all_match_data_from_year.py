@@ -1,4 +1,4 @@
-from modules_return_all_match_data_from_year import all_match_data as amd
+from return_all_match_data_from_year import all_match_data as amd
 
 
 def test_all_match_data():

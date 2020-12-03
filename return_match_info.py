@@ -1,4 +1,4 @@
-from modules_get_info import parse_deliveries as pds
+from get_info import parse_deliveries as pds
 
 
 def return_full_match_info(match_id):

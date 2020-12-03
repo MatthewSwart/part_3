@@ -1,4 +1,4 @@
-from modules_return_match_info import return_full_match_info as rfmi
+from return_match_info import return_full_match_info as rfmi
 
 
 def test_return_full_match_info():

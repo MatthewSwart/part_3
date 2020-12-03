@@ -1,4 +1,4 @@
-from modules_get_info import parse_matches as pm
+from get_info import parse_matches as pm
 
 
 def all_match_data(year):

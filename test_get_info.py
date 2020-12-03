@@ -1,5 +1,5 @@
-from modules_get_info import parse_matches as pm
-from modules_get_info import parse_deliveries as pd
+from get_info import parse_matches as pm
+from get_info import parse_deliveries as pd
 
 
 def test_parse_match():

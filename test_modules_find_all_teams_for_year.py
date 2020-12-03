@@ -1,4 +1,4 @@
-from modules_find_all_teams_for_year import get_teams_in_year as gtiy
+from find_all_teams_for_year import get_teams_in_year as gtiy
 
 team_2008 = ['Kolkata Knight Riders', 'Royal Challengers Bangalore', 'Chennai Super Kings', 'Kings XI Punjab',
              'Rajasthan Royals', 'Delhi Daredevils', 'Mumbai Indians', 'Deccan Chargers']
