@@ -75,25 +75,57 @@ def batsmen_stats(ball_dict):
     bat_team_1 = []
     bat_team_2 = []
 
-    for values in ball_dict.values():
-        if values.get('batsman', False) not in bat_team_1 and values.get('inning', False) == 1:
-            bat_team_1.append(values.get('batsman', False))
-        if values.get('batsman', False) not in bat_team_2 and values.get('inning', False) == 2:
-            bat_team_2.append(values.get('batsman', False))
-    runs_team_1 = [[]] * len(bat_team_1)
-    runs_team_2 = [[]] * len(bat_team_2)
-    for values in ball_dict.values():
-        if values.get('inning', False) == 1:
-            position = bat_team_1.index(values.get('batsman', False))
-            runs_team_1[position].append(values.get('total_runs', False))
-        if values.get('inning', False) == 2:
-            position = bat_team_2.index(values.get('batsman', False))
-            runs_team_2[position].append(values.get('total_runs', False))
+    for value in ball_dict.values():
+        if value.get('batsman', False) not in bat_team_1 and value.get('inning', False) == 1:
+            bat_team_1.append(value.get('batsman', False))
+        if value.get('batsman', False) not in bat_team_2 and value.get('inning', False) == 2:
+            bat_team_2.append(value.get('batsman', False))
+
+    runs_team_1 = [[] for i in range(len(bat_team_1))]
+    runs_team_2 = [[] for i in range(len(bat_team_1))]
+
+    for value in ball_dict.values():
+        if value.get('inning', False) == 1:
+            position = bat_team_1.index(value.get('batsman', False))
+            runs_team_1[position].append(value.get('total_runs', False))
+        if value.get('inning', False) == 2:
+            position = bat_team_2.index(value.get('batsman', False))
+            runs_team_2[position].append(value.get('total_runs', False))
+
     batsman_list.append(bat_team_1)
     batsman_list.append(runs_team_1)
     batsman_list.append(bat_team_2)
     batsman_list.append(runs_team_2)
+
     return batsman_list
+
+def bowler_stats(ball_dict):
+    bowler_list =[]
+    bowler_team_2 = []
+    bowler_team_1 = []
+
+    for value in ball_dict.values():
+        if value.get('bowler', False) not in bowler_team_2 and value.get('inning', False) == 1:
+            bowler_team_2.append(value.get('bowler', False))
+        if value.get('bowler', False) not in bowler_team_1 and value.get('inning', False) == 2:
+            bowler_team_1.append(value.get('bowler', False))
+    wide_runs_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
+    wide_runs_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+    bye_runs_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
+    bye_runs_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+    legbye_runs_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
+    legbye_runs_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+    noball_runs_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
+    noball_runs_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+    penalty_runs_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
+    penalty_runs_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+    batsman_runs_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
+    batsman_runs_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+    extra_runs_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
+    extra_runs_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+    total_runs_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
+    total_runs_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+
 
 
 if __name__ == '__main__':
@@ -103,4 +135,8 @@ if __name__ == '__main__':
 #    for fielder in dict_balls.values():
 #        if fielder.get('fielder', False) != '':
 #            print(fielder.get('fielder'))
-    batsmen_stats(dict_balls)
+    data = batsmen_stats(dict_balls)
+    for count in range(len(data[0])):
+        print(data[1][count])
+    for count in range(len(data[0])):
+        print("{:<15} : {:<1}".format(data[0][count], sum(data[1][count])))

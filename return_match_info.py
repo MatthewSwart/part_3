@@ -29,7 +29,7 @@ def return_full_match_info(match_id):
         dismissal_kind: Type of dismissal
         fielder: If a fielder played a part in it then their name will appear here.
     :param match_id:
-    :return:
+    :return: match_info
     """
     match_info = []
     match_data = pds()
