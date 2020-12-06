@@ -94,49 +94,181 @@ def batsmen_stats(ball_dict):
 
     batsman_list.append(bat_team_1)
     batsman_list.append(runs_team_1)
+    print(sum(runs_team_1))
     batsman_list.append(bat_team_2)
     batsman_list.append(runs_team_2)
 
     return batsman_list
 
+
 def bowler_stats(ball_dict):
-    bowler_list =[]
+    """
+    Bowler statistics are very vast for each game. This takes all the stats for bowlers and adds them to lists. This
+    can be used from the menu to either acquire a bowlers stats from a single game or as part of the analysis for the
+    full season.
+    :param ball_dict: Comes in from return_full_match_info.
+    :return: bowler_list
+    """
+    bowler_dict = {}
+    team_list = []
+    for value in ball_dict.values():
+        if value.get('batting_team') not in bowler_dict:
+            bowler_dict[value.get('batting_team')] = {}
+            team_list.append(value.get('batting_team'))
     bowler_team_2 = []
     bowler_team_1 = []
-
     for value in ball_dict.values():
         if value.get('bowler', False) not in bowler_team_2 and value.get('inning', False) == 1:
             bowler_team_2.append(value.get('bowler', False))
         if value.get('bowler', False) not in bowler_team_1 and value.get('inning', False) == 2:
             bowler_team_1.append(value.get('bowler', False))
+    for inputs in bowler_team_1:
+        bowler_dict[team_list[0]][inputs] = {}
+    for inputs in bowler_team_2:
+        bowler_dict[team_list[1]][inputs] = {}
+
     wide_runs_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
     wide_runs_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+    for value in ball_dict.values():
+        if value.get('inning', False) == 1:
+            position = bowler_team_2.index(value.get('bowler', False))
+            wide_runs_bowler_team_2[position].append(value.get('wide_runs', False))
+        if value.get('inning', False) == 2:
+            position = bowler_team_1.index(value.get('bowler', False))
+            wide_runs_bowler_team_1[position].append(value.get('wide_runs', False))
+
     bye_runs_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
     bye_runs_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+    for value in ball_dict.values():
+        if value.get('inning', False) == 1:
+            position = bowler_team_2.index(value.get('bowler', False))
+            bye_runs_bowler_team_2[position].append(value.get('bye_runs', False))
+        if value.get('inning', False) == 2:
+            position = bowler_team_1.index(value.get('bowler', False))
+            bye_runs_bowler_team_1[position].append(value.get('bye_runs', False))
+
     legbye_runs_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
     legbye_runs_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+    for value in ball_dict.values():
+        if value.get('inning', False) == 1:
+            position = bowler_team_2.index(value.get('bowler', False))
+            legbye_runs_bowler_team_2[position].append(value.get('legbye_runs', False))
+        if value.get('inning', False) == 2:
+            position = bowler_team_1.index(value.get('bowler', False))
+            legbye_runs_bowler_team_1[position].append(value.get('legbye_runs', False))
+
     noball_runs_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
     noball_runs_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+    for value in ball_dict.values():
+        if value.get('inning', False) == 1:
+            position = bowler_team_2.index(value.get('bowler', False))
+            noball_runs_bowler_team_2[position].append(value.get('noball_runs', False))
+        if value.get('inning', False) == 2:
+            position = bowler_team_1.index(value.get('bowler', False))
+            noball_runs_bowler_team_1[position].append(value.get('noball_runs', False))
+
     penalty_runs_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
     penalty_runs_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+    for value in ball_dict.values():
+        if value.get('inning', False) == 1:
+            position = bowler_team_2.index(value.get('bowler', False))
+            penalty_runs_bowler_team_2[position].append(value.get('penalty_runs', False))
+        if value.get('inning', False) == 2:
+            position = bowler_team_1.index(value.get('bowler', False))
+            penalty_runs_bowler_team_1[position].append(value.get('penalty_runs', False))
+
     batsman_runs_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
     batsman_runs_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+    for value in ball_dict.values():
+        if value.get('inning', False) == 1:
+            position = bowler_team_2.index(value.get('bowler', False))
+            batsman_runs_bowler_team_2[position].append(value.get('batsman_runs', False))
+        if value.get('inning', False) == 2:
+            position = bowler_team_1.index(value.get('bowler', False))
+            batsman_runs_bowler_team_1[position].append(value.get('batsman_runs', False))
+
     extra_runs_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
     extra_runs_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
-    total_runs_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
-    total_runs_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+    for value in ball_dict.values():
+        if value.get('inning', False) == 1:
+            position = bowler_team_2.index(value.get('bowler', False))
+            extra_runs_bowler_team_2[position].append(value.get('extra_runs', False))
+        if value.get('inning', False) == 2:
+            position = bowler_team_1.index(value.get('bowler', False))
+            extra_runs_bowler_team_1[position].append(value.get('extra_runs', False))
 
+    player_dismissed_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
+    player_dismissed_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+    for value in ball_dict.values():
+        if value.get('inning', False) == 1:
+            if not value.get('player_dismissed'):
+                continue
+            else:
+                if not value.get('fielder'):
+                    position = bowler_team_2.index(value.get('bowler', False))
+                    player_dismissed_bowler_team_2[position].append(value.get('player_dismissed', False))
+        if value.get('inning', False) == 2:
+            if not value.get('player_dismissed'):
+                continue
+            else:
+                if not value.get('fielder'):
+                    position = bowler_team_1.index(value.get('bowler', False))
+                    player_dismissed_bowler_team_1[position].append(value.get('player_dismissed', False))
+
+    dismissal_kind_bowler_team_2 = [[] for i in range(len(bowler_team_2))]
+    dismissal_kind_bowler_team_1 = [[] for i in range(len(bowler_team_1))]
+    for value in ball_dict.values():
+        if value.get('inning', False) == 1:
+            if not value.get('player_dismissed'):
+                continue
+            else:
+                if not value.get('fielder'):
+                    position = bowler_team_2.index(value.get('bowler', False))
+                    dismissal_kind_bowler_team_2[position].append(value.get('dismissal_kind', False))
+        if value.get('inning', False) == 2:
+            if not value.get('player_dismissed'):
+                continue
+            else:
+                if not value.get('fielder'):
+                    position = bowler_team_1.index(value.get('bowler', False))
+                    dismissal_kind_bowler_team_1[position].append(value.get('dismissal_kind', False))
+
+    for count in range(len(bowler_team_1)):
+        bowler_dict[team_list[0]][bowler_team_1[count]]['wide_runs'] = sum(wide_runs_bowler_team_1[count])
+        bowler_dict[team_list[0]][bowler_team_1[count]]['bye_runs'] = sum(bye_runs_bowler_team_1[count])
+        bowler_dict[team_list[0]][bowler_team_1[count]]['legbye_runs'] = sum(legbye_runs_bowler_team_1[count])
+        bowler_dict[team_list[0]][bowler_team_1[count]]['noball_runs'] = sum(noball_runs_bowler_team_1[count])
+        bowler_dict[team_list[0]][bowler_team_1[count]]['penalty_runs'] = sum(penalty_runs_bowler_team_1[count])
+        bowler_dict[team_list[0]][bowler_team_1[count]]['batsman_runs'] = sum(batsman_runs_bowler_team_1[count])
+        bowler_dict[team_list[0]][bowler_team_1[count]]['extra_runs'] = sum(extra_runs_bowler_team_1[count])
+        bowler_dict[team_list[0]][bowler_team_1[count]]['player_dismissed'] = player_dismissed_bowler_team_1[count]
+        bowler_dict[team_list[0]][bowler_team_1[count]]['dismissal_kind'] = dismissal_kind_bowler_team_1[count]
+
+    for count in range(len(bowler_team_2)):
+        bowler_dict[team_list[1]][bowler_team_2[count]]['wide_runs'] = sum(wide_runs_bowler_team_2[count])
+        bowler_dict[team_list[1]][bowler_team_2[count]]['bye_runs'] = sum(bye_runs_bowler_team_2[count])
+        bowler_dict[team_list[1]][bowler_team_2[count]]['legbye_runs'] = sum(legbye_runs_bowler_team_2[count])
+        bowler_dict[team_list[1]][bowler_team_2[count]]['noball_runs'] = sum(noball_runs_bowler_team_2[count])
+        bowler_dict[team_list[1]][bowler_team_2[count]]['penalty_runs'] = sum(penalty_runs_bowler_team_2[count])
+        bowler_dict[team_list[1]][bowler_team_2[count]]['batsman_runs'] = sum(batsman_runs_bowler_team_2[count])
+        bowler_dict[team_list[1]][bowler_team_2[count]]['extra_runs'] = sum(extra_runs_bowler_team_2[count])
+        bowler_dict[team_list[1]][bowler_team_2[count]]['player_dismissed'] = player_dismissed_bowler_team_2[count]
+        bowler_dict[team_list[1]][bowler_team_2[count]]['dismissal_kind'] = dismissal_kind_bowler_team_2[count]
+
+    print(bowler_dict)
 
 
 if __name__ == '__main__':
     dict_balls = sort_match_data(413)
-#    for entries in dict_balls:
-#       print(entries)
-#    for fielder in dict_balls.values():
-#        if fielder.get('fielder', False) != '':
-#            print(fielder.get('fielder'))
-    data = batsmen_stats(dict_balls)
-    for count in range(len(data[0])):
-        print(data[1][count])
-    for count in range(len(data[0])):
-        print("{:<15} : {:<1}".format(data[0][count], sum(data[1][count])))
+    #    for entries in dict_balls:
+    #       print(entries)
+    #    for fielder in dict_balls.values():
+    #        if fielder.get('fielder', False) != '':
+    #            print(fielder.get('fielder'))
+    # data = batsmen_stats(dict_balls)
+    # for count in range(len(data[0])):
+    # print(data[1][count])
+    # for count in range(len(data[0])):
+    # print("{:<15} : {:<1}".format(data[0][count], sum(data[1][count])))
+
+    data2 = bowler_stats(dict_balls)
