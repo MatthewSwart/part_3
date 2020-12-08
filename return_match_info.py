@@ -39,6 +39,6 @@ def return_full_match_info(match_id):
     return match_info
 
 
-if __name__ == '__main__':
-    data = return_full_match_info(416)
-    print(data)
+#if __name__ == '__main__':
+#    data = return_full_match_info(416)
+#    print(data)

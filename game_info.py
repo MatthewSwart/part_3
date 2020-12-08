@@ -255,20 +255,7 @@ def bowler_stats(ball_dict):
         bowler_dict[team_list[1]][bowler_team_2[count]]['player_dismissed'] = player_dismissed_bowler_team_2[count]
         bowler_dict[team_list[1]][bowler_team_2[count]]['dismissal_kind'] = dismissal_kind_bowler_team_2[count]
 
-    print(bowler_dict)
 
 
-if __name__ == '__main__':
-    dict_balls = sort_match_data(413)
-    #    for entries in dict_balls:
-    #       print(entries)
-    #    for fielder in dict_balls.values():
-    #        if fielder.get('fielder', False) != '':
-    #            print(fielder.get('fielder'))
-    # data = batsmen_stats(dict_balls)
-    # for count in range(len(data[0])):
-    # print(data[1][count])
-    # for count in range(len(data[0])):
-    # print("{:<15} : {:<1}".format(data[0][count], sum(data[1][count])))
 
-    data2 = bowler_stats(dict_balls)
+
